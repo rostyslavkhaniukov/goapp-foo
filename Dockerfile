@@ -12,7 +12,7 @@ RUN go env -w GOPROXY=direct
 ADD go.mod go.sum ./
 # RUN go mod download
 
-ADD .. .
+ADD . .
 
 RUN CGO_ENABLED=0 GOOS=$TARGETOS GOARCH=$TARGETARCH go build -o /bin/server ./
 
