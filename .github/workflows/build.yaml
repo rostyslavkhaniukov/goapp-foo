@@ -18,6 +18,6 @@ jobs:
       - name: Push image
         run: |
           IMAGE_ID=ghcr.io/${{ github.repository }}
-          VERSION=${{ github.ref }}
+          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
           docker tag goapp-foo $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
